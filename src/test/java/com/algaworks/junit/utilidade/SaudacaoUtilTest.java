@@ -17,6 +17,13 @@ class SaudacaoUtilTest {
     // teste para lançar exception, tem assertions expecifica para isso
     @Test
     public  void deveLancarExeception() {
+        IllegalArgumentException illegalArgumentException = assertThrows(IllegalArgumentException.class, () -> { SaudacaoUtil.saudar(-9); });
         assertThrows(IllegalArgumentException.class, () -> { SaudacaoUtil.saudar(-9); });
+        assertEquals("Hora inválida", illegalArgumentException.getMessage());
+    }
+
+    @Test
+    public void naoDeveLancarException() {
+        assertDoesNotThrow(() -> { SaudacaoUtil.saudar(9); });
     }
 }
